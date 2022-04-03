@@ -22,13 +22,12 @@ expr { printf("%d\n", $1); }
 
 
 expr:
-BOOLEAN
-| VARIABLE        { $$ = sym[$1];}
+BOOLEAN  { $$ = $1; }
+| '(' expr ')'    { $$ = $2; }
 | expr expr AND   { $$ = $1 * $3;}
 | expr expr OR   { if($1==1||$3 ==1){$$=1;}else{$$=0;} }
 | expr NOT       { if($2==1){ $$=0; }else{ $$=1;} }
 | expr expr XOR   { if( $1 ==0 && $3==1 || $1 ==1 && $3==0){ $$=1; }else{$$=0 ;} }
-| '(' expr ')'    { $$ = $2; }
 
 
 ;
