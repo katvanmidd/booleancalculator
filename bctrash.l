@@ -8,17 +8,16 @@ not return NOT;
 and return AND;
 or return OR;
 xor return XOR;
+
 [a-z] {
          yylval = *yytext - 'a';
          return VARIABLE;
       }
 
-
-[FALSE-TRUE]+ {
-          yylval = atoi(yytext);
-          return BOOLEAN;
-       }
-
+"true"              {yylval=1;  return BOOLEAN;}
+"false"             {yylval=0;  return BOOLEAN;}
+"TRUE"              {yylval=1;  return BOOLEAN;}
+"FALSE"             {yylval=0;  return BOOLEAN;}
 
 [()=\n] { return *yytext; }
 [ \t] ;
