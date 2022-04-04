@@ -15,7 +15,13 @@ program statement '\n'
 |
 ;
 statement:
-expr { printf("%d\n", $1); }
+expr {
+    if ($1 == 0) {
+        printf("FALSE\n");
+    } else {
+        printf("TRUE\n");
+    }
+}
 | VARIABLE '=' expr { sym[$1] = $3; }
 | statement ',' statement
 ;
