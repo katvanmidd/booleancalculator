@@ -1,15 +1,23 @@
 %{
 #include <stdlib.h>
 void yyerror(char *);
-#include "bctrash.tab.h"
+#include "boolcalc.tab.h"
 %}
 %%
 not return NOT;
+NOT return NOT;
+! return NOT;
 and return AND;
+AND return AND;
+& return AND;
 or return OR;
+OR return OR;
+"|" return OR;
 xor return XOR;
+XOR return XOR;
+XoR return XOR;
 
-[a-z] {
+[a-z,!,&,"|",A-Z] {
          yylval = *yytext - 'a';
          return VARIABLE;
       }
