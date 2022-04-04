@@ -1,13 +1,13 @@
 # booleancalculator
 how to compile in terminal:
 
-flex bctrash.l
+flex boolcalc.l
 
 
-bison bctrash.y -d
+bison boolcalc.y -d
 
 
-gcc -lm bctrash.tab.c -ll -ly -o filename
+gcc -lm boolcalc.tab.c -ll -ly -o filename
 
 
 ./filename
